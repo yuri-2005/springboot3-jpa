@@ -1,6 +1,7 @@
 package com.example.course.entities;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.HashSet;
 import java.util.Objects;
@@ -101,6 +102,16 @@ public class Order implements Serializable {
 	
 	public Payment getPayment() {
 		return payment;
+	}
+	
+	public BigDecimal getTotal() {
+		BigDecimal sum = new BigDecimal(0.0);
+		
+		for(OrderItem x : items) {
+			sum = sum.add(x.getSubTotal());
+		}
+		
+		return sum;
 	}
 	
 	@Override

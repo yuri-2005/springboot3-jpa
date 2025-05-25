@@ -67,6 +67,10 @@ public class OrderItem implements Serializable{
 	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
+	
+	public BigDecimal getSubTotal() {
+		return price.multiply(BigDecimal.valueOf(quantity));
+	}
 
 	@Override
 	public int hashCode() {
